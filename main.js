@@ -10,11 +10,11 @@ let modalProfession = document.querySelector(".modal__input-profession");
 let profileInfo = document.querySelector(".profile__info");
 
 const openEditProfile = function () {
-  modal.classList.remove("modal__hidden");
+  modal.classList.remove("hidden");
 };
 
 const closeModal = function () {
-  modal.classList.add("modal__hidden");
+  modal.classList.add("hidden");
 };
 
 btnEditProfile.addEventListener("click", openEditProfile);

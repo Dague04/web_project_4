@@ -6,7 +6,6 @@
 @import url(./__button/modal__button.css);
 @import url(./__button-text/modal__button-text.css);
 @import url(./__closebtn/modal__closebtn.css);
-@import url(./__hidden/modal__hidden.css);
 
 .modal {
   position: fixed;
