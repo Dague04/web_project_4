@@ -1,0 +1,17 @@
+@import url(./__list/elements__list.css);
+@import url(./__item/elements__item.css);
+@import url(./__caption/elements__caption.css);
+@import url(./__caption-data/elements__caption-data.css);
+@import url(./__text/elements__text.css);
+@import url(./__heart/elements__heart.css);
+
+.elements {
+  width: 100%;
+  margin-bottom: 67px;
+}
+
+@media screen and (max-width: 320px) {
+  .elements {
+    margin-bottom: 48px;
+  }
+}

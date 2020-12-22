@@ -1,0 +1,23 @@
+.modal__button {
+  width: 100%;
+  box-sizing: border-box;
+  /* height: 50.15px; */
+  margin-top: 48px;
+  padding-top: 13.66px;
+  padding-bottom: 18.49px;
+  background-color: #000000;
+  border: none;
+  border-radius: 2px;
+}
+
+@media screen and (max-width: 320px) {
+  .modal__button {
+    margin-top: 45px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+}
+
+.modal__button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}

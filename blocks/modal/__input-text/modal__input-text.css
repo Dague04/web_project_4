@@ -1,0 +1,25 @@
+.modal__input-text {
+  width: 100%;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.21;
+  max-height: 14px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  margin-bottom: 29.74px;
+  padding-bottom: 13.26px;
+  padding-top: 0;
+  outline: none;
+}
+
+@media screen and (max-width: 320px) {
+  .modal__input-text {
+    margin-bottom: 30px;
+    padding-bottom: 13px;
+  }
+}
+
+.modal__input-text:last-of-type {
+  margin-bottom: 0;
+}

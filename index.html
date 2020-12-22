@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./pages/index.css" />
+    <title>Around The US</title>
+  </head>
+  <body class="root">
+    <header class="header">
+      <img src="./images/logo.svg" alt="logo image" class="header__logo" />
+    </header>
+    <main class="content">
+      <section class="profile">
+        <div class="profile__box">
+          <img
+            src="./images/cousteau.svg"
+            alt="Cousteau photo"
+            class="profile__avatar"
+          />
+          <div class="profile__info">
+            <h1 class="profile__name">Jacques Cousteau</h1>
+            <button class="profile__edit-button"></button>
+            <p class="profile__profession">Explorer</p>
+          </div>
+        </div>
+        <button class="profile__add-button">+</button>
+      </section>
+      <section class="modal modal__hidden">
+        <div class="modal__content">
+          <form class="modal__profile-form">
+            <h3 class="modal__heading">Edit profile</h3>
+            <input
+              id="name"
+              type="text"
+              placeholder="Jacques Cousteaux"
+              class="modal__input-text modal__input-name"
+            />
+            <input
+              id="profession"
+              type="text"
+              placeholder="Explorer"
+              class="modal__input-text modal__input-profession"
+            />
+            <button class="modal__button modal__button-text" type="submit">
+              Save
+            </button>
+            <button class="modal__closebtn"></button>
+          </form>
+        </div>
+      </section>
+      <section class="elements">
+        <ul class="elements__list">
+          <li>
+            <img
+              src="./images/yosemite.svg"
+              alt="Yosemite Valley"
+              class="elements__item"
+            />
+            <div class="elements__caption">
+              <div class="elements__caption-data">
+                <p class="elements__text">Yosemite Valley</p>
+                <button class="elements__heart"></button>
+              </div>
+            </div>
+          </li>
+          <li>
+            <img
+              src="./images/louise.svg"
+              alt="Lake Loiuse"
+              class="elements__item"
+            />
+            <div class="elements__caption">
+              <div class="elements__caption-data">
+                <p class="elements__text">Lake Louise</p>
+                <button class="elements__heart"></button>
+              </div>
+            </div>
+          </li>
+          <li>
+            <img
+              src="./images/mountains.svg"
+              alt="Bald Mountains"
+              class="elements__item"
+            />
+            <div class="elements__caption">
+              <div class="elements__caption-data">
+                <p class="elements__text">Bald Mountains</p>
+                <button class="elements__heart"></button>
+              </div>
+            </div>
+          </li>
+          <li>
+            <img
+              src="./images/latemar.svg"
+              alt="Latemar"
+              class="elements__item"
+            />
+            <div class="elements__caption">
+              <div class="elements__caption-data">
+                <p class="elements__text">Latemar</p>
+                <button class="elements__heart"></button>
+              </div>
+            </div>
+          </li>
+          <li>
+            <img
+              src="./images/vanoise.svg"
+              alt="Vanoise National"
+              class="elements__item"
+            />
+            <div class="elements__caption">
+              <div class="elements__caption-data">
+                <p class="elements__text">Vanoise National ...</p>
+                <button class="elements__heart"></button>
+              </div>
+            </div>
+          </li>
+          <li>
+            <img
+              src="./images/lago.svg"
+              alt="Lago di Braies"
+              class="elements__item"
+            />
+            <div class="elements__caption">
+              <div class="elements__caption-data">
+                <p class="elements__text">Lago di Braies</p>
+                <button class="elements__heart"></button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer__copyright">© 2020 Around The U.S.</p>
+    </footer>
+    <script src="main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+.modal__content {
+  position: relative;
+  top: 195px;
+  background-color: #ffffff;
+  margin: 0 auto;
+  max-width: 430px;
+  /* max-height: 330px; */
+  box-sizing: border-box;
+  /* height: 330px; */
+  padding: 34px 36px 36.51px 36px;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 518px) {
+  .modal__content {
+    top: 156px;
+    max-width: 300px;
+    padding: 23px 25px 25px 25px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .modal__content {
+    top: 123px;
+    max-width: 282px;
+    padding: 25px 22px;
+  }
+}

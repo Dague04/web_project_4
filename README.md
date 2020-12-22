@@ -2,15 +2,8 @@
 
 ### Overview
 
-* Figma
-* Images
+This is a responsive webpage about using Javascript, html and css to create a modal with a form. We are able to edit the form in the modal which will be reflected in the main page.
 
-**Figma**
+The site can be accessed live at the following link:
 
-* [Link to the project in Figma](https://www.figma.com/file/mUgu8OSHWE0M6p6vfwmdu9/Sprint-4-Around-The-U.S.-desktop-mobile?node-id=0%3A1)
-
-**Images**
-
-The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster. 
-
-Have fun with JavaScript!
+- [Link to the project in Figma](https://www.figma.com/file/mUgu8OSHWE0M6p6vfwmdu9/Sprint-4-Around-The-U.S.-desktop-mobile?node-id=0%3A1)

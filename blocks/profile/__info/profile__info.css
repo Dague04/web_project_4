@@ -1,0 +1,24 @@
+.profile__info {
+  display: grid;
+  max-width: 415px;
+  grid-template-areas:
+    "name button"
+    "profession .";
+  /* gap: 16px 18px; */
+  align-self: center;
+  margin-left: 30px;
+}
+
+@media screen and (max-width: 772px) {
+  .profile__info {
+    margin: 0 auto;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .profile__info {
+    margin-bottom: 0;
+  }
+}
