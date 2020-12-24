@@ -1,12 +1,9 @@
 .profile__edit-button {
   grid-area: button;
-  max-width: 10px;
-  max-height: 10px;
-  background-image: url(../../../images/edit-button.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: transparent;
-  padding: 11px;
+  width: 24px;
+  height: 24px;
+  background: transparent url(../../../images/edit-button.svg) no-repeat center;
+  background-size: cover;
   margin-top: 15px;
   border: 1px solid #fff;
   cursor: pointer;
@@ -14,18 +11,16 @@
 
 @media screen and (max-width: 772px) {
   .profile__edit-button {
-    max-width: 8px;
-    max-height: 8px;
-    padding: 7px;
+    width: 20px;
+    height: 20px;
     margin-top: 12px;
   }
 }
 
 @media screen and (max-width: 320px) {
   .profile__edit-button {
-    max-width: 5px;
-    max-height: 5px;
-    padding: 5px;
+    width: 18px;
+    height: 18px;
     margin-top: 5px;
   }
 }

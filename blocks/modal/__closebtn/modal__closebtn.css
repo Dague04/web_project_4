@@ -2,8 +2,8 @@
   background-image: url(../../../images/closebtn.svg);
   background-position: 50%;
   position: absolute;
-  top: -72px;
-  right: -73px;
+  top: -40px;
+  right: -25px;
   width: 2.5rem;
   height: 2.5rem;
   border: none;
@@ -14,15 +14,16 @@
 
 @media screen and (max-width: 518px) {
   .modal__closebtn {
-    top: -55px;
-    right: -30px;
+    top: -30px;
+    right: -25px;
     width: 1.7rem;
     height: 1.7rem;
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 358px) {
   .modal__closebtn {
+    right: -10px;
     width: 1.625rem;
     height: 1.625rem;
   }

@@ -20,34 +20,23 @@
           />
           <div class="profile__info">
             <h1 class="profile__name">Jacques Cousteau</h1>
-            <button class="profile__edit-button"></button>
+            <button
+              aria-label="Edit"
+              title="Edit profile"
+              class="profile__edit-button"
+              type="button"
+            ></button>
             <p class="profile__profession">Explorer</p>
           </div>
         </div>
-        <button class="profile__add-button">+</button>
-      </section>
-      <section class="modal hidden">
-        <div class="modal__content">
-          <form class="modal__profile-form">
-            <h3 class="modal__heading">Edit profile</h3>
-            <input
-              id="name"
-              type="text"
-              placeholder="Jacques Cousteaux"
-              class="modal__input-text modal__input-name"
-            />
-            <input
-              id="profession"
-              type="text"
-              placeholder="Explorer"
-              class="modal__input-text modal__input-profession"
-            />
-            <button class="modal__button modal__button-text" type="submit">
-              Save
-            </button>
-            <button class="modal__closebtn"></button>
-          </form>
-        </div>
+        <button
+          aria-label="Add a profile"
+          title="Add a profile"
+          class="profile__add-button"
+          type="button"
+        >
+          +
+        </button>
       </section>
       <section class="elements">
         <ul class="elements__list">
@@ -58,10 +47,8 @@
               class="elements__item"
             />
             <div class="elements__caption">
-              <div class="elements__caption-data">
-                <p class="elements__text">Yosemite Valley</p>
-                <button class="elements__heart"></button>
-              </div>
+              <p class="elements__text">Yosemite Valley</p>
+              <button class="elements__heart" type="button"></button>
             </div>
           </li>
           <li>
@@ -71,10 +58,8 @@
               class="elements__item"
             />
             <div class="elements__caption">
-              <div class="elements__caption-data">
-                <p class="elements__text">Lake Louise</p>
-                <button class="elements__heart"></button>
-              </div>
+              <p class="elements__text">Lake Louise</p>
+              <button class="elements__heart" type="button"></button>
             </div>
           </li>
           <li>
@@ -84,10 +69,8 @@
               class="elements__item"
             />
             <div class="elements__caption">
-              <div class="elements__caption-data">
-                <p class="elements__text">Bald Mountains</p>
-                <button class="elements__heart"></button>
-              </div>
+              <p class="elements__text">Bald Mountains</p>
+              <button class="elements__heart" type="button"></button>
             </div>
           </li>
           <li>
@@ -97,10 +80,8 @@
               class="elements__item"
             />
             <div class="elements__caption">
-              <div class="elements__caption-data">
-                <p class="elements__text">Latemar</p>
-                <button class="elements__heart"></button>
-              </div>
+              <p class="elements__text">Latemar</p>
+              <button class="elements__heart" type="button"></button>
             </div>
           </li>
           <li>
@@ -110,10 +91,8 @@
               class="elements__item"
             />
             <div class="elements__caption">
-              <div class="elements__caption-data">
-                <p class="elements__text">Vanoise National ...</p>
-                <button class="elements__heart"></button>
-              </div>
+              <p class="elements__text">Vanoise National ...</p>
+              <button class="elements__heart" type="button"></button>
             </div>
           </li>
           <li>
@@ -123,10 +102,8 @@
               class="elements__item"
             />
             <div class="elements__caption">
-              <div class="elements__caption-data">
-                <p class="elements__text">Lago di Braies</p>
-                <button class="elements__heart"></button>
-              </div>
+              <p class="elements__text">Lago di Braies</p>
+              <button class="elements__heart" type="button"></button>
             </div>
           </li>
         </ul>
@@ -135,6 +112,35 @@
     <footer class="footer">
       <p class="footer__copyright">© 2020 Around The U.S.</p>
     </footer>
-    <script src="main.js"></script>
+    <div class="modal hidden">
+      <div class="modal__content">
+        <h3 class="modal__heading">Edit profile</h3>
+
+        <form class="modal__profile-form">
+          <input
+            id="name"
+            type="text"
+            placeholder="Name"
+            class="modal__input-text modal__input-name"
+          />
+          <input
+            id="profession"
+            type="text"
+            placeholder="Profession"
+            class="modal__input-text modal__input-profession"
+          />
+          <button class="modal__button modal__button-text" type="submit">
+            Save
+          </button>
+        </form>
+        <button
+          aria-label="Close"
+          title="Close"
+          class="modal__closebtn"
+          type="button"
+        ></button>
+      </div>
+    </div>
+    <script src="./scripts/index.js"></script>
   </body>
 </html>

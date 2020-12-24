@@ -1,8 +1,8 @@
 .modal__content {
   position: relative;
-  top: 195px;
+  /* top: 195px; */
   background-color: #ffffff;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   max-width: 430px;
   /* max-height: 330px; */
   box-sizing: border-box;
@@ -14,7 +14,6 @@
 
 @media screen and (max-width: 518px) {
   .modal__content {
-    top: 156px;
     max-width: 300px;
     padding: 23px 25px 25px 25px;
   }
@@ -22,7 +21,6 @@
 
 @media screen and (max-width: 320px) {
   .modal__content {
-    top: 123px;
     max-width: 282px;
     padding: 25px 22px;
   }
