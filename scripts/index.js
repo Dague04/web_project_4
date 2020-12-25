@@ -11,13 +11,17 @@ let modalProfession = profileModalForm.querySelector(
 let profileInfo = document.querySelector(".profile__info");
 
 const openEditProfile = function () {
-  modal.classList.remove("hidden");
+  modal.classList.add("visible");
+
   modalUsername.value = username.textContent;
   modalProfession.value = profession.textContent;
 };
 
 const closeModal = function () {
-  modal.classList.add("hidden");
+  // modal.classList.remove("hidden");
+  modal.classList.toggle("visible");
+  //modal.style.opacity = 0;
+  modal.style.transition = "all 1s ease-in-out";
 };
 
 btnEditProfile.addEventListener("click", openEditProfile);

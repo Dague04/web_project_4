@@ -2,14 +2,14 @@
   width: 150px;
   height: 50px;
   align-self: center;
-  background-image: url(../../../images/plus.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: transparent;
-  /* padding: 23px 73px; */
+  background: transparent url(../../../images/plus.svg) no-repeat center;
   border: 2px solid #fff;
   border-radius: 2px;
   cursor: pointer;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: opacity 0.3s ease;
 }
 
 @media only screen and (max-width: 772px) {

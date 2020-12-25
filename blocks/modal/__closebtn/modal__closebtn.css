@@ -1,6 +1,5 @@
 .modal__closebtn {
-  background-image: url(../../../images/closebtn.svg);
-  background-position: 50%;
+  background: transparent url(../../../images/closebtn.svg) no-repeat 50%;
   position: absolute;
   top: -40px;
   right: -25px;
@@ -8,7 +7,6 @@
   height: 2.5rem;
   border: none;
   padding: 0;
-  background-color: transparent;
   cursor: pointer;
 }
 

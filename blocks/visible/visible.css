@@ -1,0 +1,5 @@
+.modal.visible {
+  transition: all 1s ease-in-out;
+  visibility: visible;
+  opacity: 1;
+}
