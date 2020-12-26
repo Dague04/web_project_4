@@ -11,7 +11,7 @@ let modalProfession = profileModalForm.querySelector(
 let profileInfo = document.querySelector(".profile__info");
 
 const openEditProfile = function () {
-  modal.classList.add("visible");
+  modal.classList.add("is-visible");
 
   modalUsername.value = username.textContent;
   modalProfession.value = profession.textContent;
@@ -19,9 +19,9 @@ const openEditProfile = function () {
 
 const closeModal = function () {
   // modal.classList.remove("hidden");
-  modal.classList.toggle("visible");
+  modal.classList.toggle("is-visible");
   //modal.style.opacity = 0;
-  modal.style.transition = "all 1s ease-in-out";
+  // modal.style.transition = "all 1s ease-in-out";
 };
 
 btnEditProfile.addEventListener("click", openEditProfile);
