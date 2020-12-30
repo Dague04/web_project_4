@@ -1,3 +1,30 @@
+const initialCards = [
+  {
+    name: "Yosemite Valley",
+    link: "https://code.s3.yandex.net/web-code/yosemite.jpg",
+  },
+  {
+    name: "Lake Louise",
+    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg",
+  },
+  {
+    name: "Bald Mountains",
+    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg",
+  },
+  {
+    name: "Latemar",
+    link: "https://code.s3.yandex.net/web-code/latemar.jpg",
+  },
+  {
+    name: "Vanoise National Park",
+    link: "https://code.s3.yandex.net/web-code/vanoise.jpg",
+  },
+  {
+    name: "Lago di Braies",
+    link: "https://code.s3.yandex.net/web-code/lago.jpg",
+  },
+];
+let container = document.querySelector(".content");
 let modal = document.querySelector(".modal");
 let btncloseModal = modal.querySelector(".modal__closebtn");
 let btnEditProfile = document.querySelector(".profile__edit-button");
@@ -11,17 +38,14 @@ let modalProfession = profileModalForm.querySelector(
 let profileInfo = document.querySelector(".profile__info");
 
 const openEditProfile = function () {
-  modal.classList.add("is-visible");
+  modal.classList.add("modal_is-visible");
 
   modalUsername.value = username.textContent;
   modalProfession.value = profession.textContent;
 };
 
 const closeModal = function () {
-  // modal.classList.remove("hidden");
-  modal.classList.toggle("is-visible");
-  //modal.style.opacity = 0;
-  // modal.style.transition = "all 1s ease-in-out";
+  modal.classList.toggle("modal_is-visible");
 };
 
 btnEditProfile.addEventListener("click", openEditProfile);
@@ -34,4 +58,16 @@ profileModalForm.addEventListener("submit", function (e) {
   profession.textContent = modalProfession.value;
 
   closeModal();
+});
+
+initialCards.forEach((user) => {
+  let elementsContainer = container.querySelector(".elements");
+  let elementsUL = document.querySelector(".elements__list");
+
+  let cardTemplate = document.querySelector("#elements-template").content;
+  let cardElement = cardTemplate.cloneNode(true);
+  cardElement.querySelector(".elements__item").setAttribute("src", user.link);
+  cardElement.querySelector(".elements__text").textContent = user.name;
+  elementsUL.append(cardElement);
+  // elementsContainer.append(cardElement);
 });
