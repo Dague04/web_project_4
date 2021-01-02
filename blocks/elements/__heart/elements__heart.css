@@ -3,7 +3,8 @@
   height: 18.13px;
   background: transparent url(../../../images/heart.svg) no-repeat;
   border: none;
-  transition: opacity 0.2s ease-in;
+  outline: none;
+  /* transition: opacity 0.2s ease-in; */
 }
 
 .elements__heart:hover {

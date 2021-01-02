@@ -3,6 +3,7 @@
 @import url(./__caption/elements__caption.css);
 @import url(./__text/elements__text.css);
 @import url(./__heart/elements__heart.css);
+@import url(./__heart/_theme_dark/elements__heart_theme_dark.css);
 
 .elements {
   width: 100%;
