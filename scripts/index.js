@@ -45,7 +45,6 @@ let modalProfession = profileModalForm.querySelector(
 let modalCardTitle = cardModalForm.querySelector(".modal__input-title");
 let modalImageLink = cardModalForm.querySelector(".modal__input-image-link");
 let profileInfo = document.querySelector(".profile__info");
-// let btnCardHeart = elementsTemplate.querySelector(".elements__heart");
 
 // Edit Profile
 
@@ -80,6 +79,7 @@ btnAddCard.addEventListener("click", openAddCard);
 
 btnCloseCardModal.addEventListener("click", () => closeModal(modalCard));
 
+// upload a card
 cardModalForm.addEventListener("submit", function (e) {
   e.preventDefault();
   let elementsUL = document.querySelector(".elements__list");
@@ -111,5 +111,13 @@ let buttonLikes = document.querySelectorAll(".elements__heart");
 buttonLikes.forEach((like) => {
   like.addEventListener("click", () => {
     like.classList.toggle("elements__heart_theme_dark");
+  });
+});
+
+// delete card
+let buttonDelete = document.querySelectorAll(".elements__delete-card");
+buttonDelete.forEach((btn) => {
+  btn.addEventListener("click", (evt) => {
+    evt.target.closest(".elements__list-item").remove();
   });
 });
