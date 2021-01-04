@@ -20,8 +20,12 @@
 
 @media screen and (max-width: 600px) {
   .elements__list {
-    max-width: 600px;
-    grid-template-columns: 282px;
+    /* max-width: 600px; */
+    /* grid-template-columns: 282px; */
+    /* width: 282px; */
+    display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
   }
 }

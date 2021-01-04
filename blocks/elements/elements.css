@@ -12,6 +12,15 @@
   margin-bottom: 67px;
 }
 
+@media screen and (max-width: 600px) {
+  .elements {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
 @media screen and (max-width: 320px) {
   .elements {
     margin-bottom: 48px;

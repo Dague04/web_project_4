@@ -19,10 +19,10 @@ const initialCards = [
     name: "Vanoise National Park",
     link: "https://code.s3.yandex.net/web-code/vanoise.jpg",
   },
-  // {
-  //   name: "Lago di Braies",
-  //   link: "https://code.s3.yandex.net/web-code/lago.jpg",
-  // },
+  {
+    name: "Lago di Braies",
+    link: "https://code.s3.yandex.net/web-code/lago.jpg",
+  },
 ];
 let container = document.querySelector(".content");
 let modalProfile = document.querySelector(".edit-profile");
@@ -71,13 +71,16 @@ profileModalForm.addEventListener("submit", function (e) {
   closeModal(modalProfile);
 });
 
-// Add Card
+// make modal card form visible
 const openAddCard = function () {
   modalCard.classList.add("modal_is-visible");
 };
 btnAddCard.addEventListener("click", openAddCard);
 
+// close card modal
 btnCloseCardModal.addEventListener("click", () => closeModal(modalCard));
+
+// Open an image pop-up
 
 // upload a card
 cardModalForm.addEventListener("submit", function (e) {
@@ -121,3 +124,20 @@ buttonDelete.forEach((btn) => {
     evt.target.closest(".elements__list-item").remove();
   });
 });
+
+// Open an image modal
+let imagePopup = document.querySelector(".image-popup");
+let previews = document.querySelectorAll(".elements__item");
+let original = document.querySelector(".image-popup__img");
+let imageCaption = document.querySelector(".image-popup");
+previews.forEach((image) => {
+  image.addEventListener("click", () => {
+    imagePopup.classList.add("modal_is-visible");
+    original.src = image.src;
+  });
+});
+
+// Close image modal
+let imageModal = document.querySelector(".image-view");
+let btnImageClosemodal = document.querySelector(".image-popup__closebtn");
+btnImageClosemodal.addEventListener("click", () => closeModal(imageModal));

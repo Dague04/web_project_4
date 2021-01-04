@@ -1,0 +1,12 @@
+.image-popup__closebtn {
+  background: transparent url(../../../images/closebtn.svg) no-repeat 50%;
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: 1000;
+}
