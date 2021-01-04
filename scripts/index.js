@@ -2,26 +2,32 @@ const initialCards = [
   {
     name: "Yosemite Valley",
     link: "https://code.s3.yandex.net/web-code/yosemite.jpg",
+    alt: "Yosemite Valley",
   },
   {
     name: "Lake Louise",
     link: "https://code.s3.yandex.net/web-code/lake-louise.jpg",
+    alt: "Lake Louise",
   },
   {
     name: "Bald Mountains",
     link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg",
+    alt: "Bald Mountains",
   },
   {
     name: "Latemar",
     link: "https://code.s3.yandex.net/web-code/latemar.jpg",
+    alt: "Latemar",
   },
   {
     name: "Vanoise National Park",
     link: "https://code.s3.yandex.net/web-code/vanoise.jpg",
+    alt: "Vanoise National Park",
   },
   {
     name: "Lago di Braies",
     link: "https://code.s3.yandex.net/web-code/lago.jpg",
+    alt: "Lago di Braies",
   },
 ];
 let container = document.querySelector(".content");
@@ -105,6 +111,7 @@ initialCards.forEach((user) => {
   let cardElement = cardTemplate.cloneNode(true);
   cardElement.querySelector(".elements__item").setAttribute("src", user.link);
   cardElement.querySelector(".elements__text").textContent = user.name;
+  cardElement.querySelector(".elements__item").alt = user.alt;
   elementsUL.append(cardElement);
 });
 
@@ -129,11 +136,13 @@ buttonDelete.forEach((btn) => {
 let imagePopup = document.querySelector(".image-popup");
 let previews = document.querySelectorAll(".elements__item");
 let original = document.querySelector(".image-popup__img");
-let imageCaption = document.querySelector(".image-popup");
+
+let modalCaption = document.querySelector(".image-popup__caption");
 previews.forEach((image) => {
   image.addEventListener("click", () => {
     imagePopup.classList.add("modal_is-visible");
     original.src = image.src;
+    modalCaption.textContent = image.alt;
   });
 });
 

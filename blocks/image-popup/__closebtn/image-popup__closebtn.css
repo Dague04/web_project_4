@@ -10,3 +10,12 @@
   cursor: pointer;
   z-index: 1000;
 }
+
+@media screen and (max-width: 634px) {
+  .image-popup__closebtn {
+    top: -28px;
+    right: -25px;
+    width: 1.625rem;
+    height: 1.625rem;
+  }
+}
