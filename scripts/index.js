@@ -93,14 +93,6 @@ btnCloseCardModal.addEventListener("click", () => closeModal(modalCard));
 
 cardModalForm.addEventListener("submit", function (e) {
   e.preventDefault();
-  // let elementsUL = document.querySelector(".elements__list");
-  // const cardElement = createCardTemplate();
-  // cardElement.querySelector(".elements__text").textContent =
-  //   modalCardTitle.value;
-  // cardElement
-  //   .querySelector(".elements__item")
-  //   .setAttribute("src", modalImageLink.value);
-  // elementsUL.prepend(cardElement);
   renderCards({
     link: modalImageLink.value,
     name: modalCardTitle.value,
@@ -108,27 +100,6 @@ cardModalForm.addEventListener("submit", function (e) {
 
   closeModal(modalCard);
 });
-
-const cardEvents = () => {
-  const card = createCardTemplate();
-
-  let buttonLikes = card.querySelector(".elements__heart");
-  // buttonLikes.forEach((like) => {
-  //   like.addEventListener("click", () => {
-  //     like.classList.toggle("elements__heart_theme_dark");
-  //   });
-  // });
-  buttonLikes.addEventListener("click", () => {
-    buttonLikes.classList.toggle("elements__heart_theme_dark");
-  });
-  // delete card
-  let buttonDelete = document.querySelectorAll(".elements__delete-card");
-  buttonDelete.forEach((btn) => {
-    btn.addEventListener("click", (evt) => {
-      evt.target.closest(".elements__list-item").remove();
-    });
-  });
-};
 
 const renderCards = (data) => {
   const link = data.link;
@@ -169,36 +140,6 @@ const renderCards = (data) => {
 initialCards.forEach((card) => {
   renderCards(card);
 });
-// image Likes
-
-// let buttonLikes = document.querySelectorAll(".elements__heart");
-// buttonLikes.forEach((like) => {
-//   like.addEventListener("click", () => {
-//     like.classList.toggle("elements__heart_theme_dark");
-//   });
-// });
-
-// delete card
-// let buttonDelete = document.querySelectorAll(".elements__delete-card");
-// buttonDelete.forEach((btn) => {
-//   btn.addEventListener("click", (evt) => {
-//     evt.target.closest(".elements__list-item").remove();
-//   });
-// });
-
-// Open an image modal
-// let imagePopup = document.querySelector(".image-popup");
-// let previews = document.querySelectorAll(".elements__item");
-// let original = document.querySelector(".image-popup__img");
-
-// let modalCaption = document.querySelector(".image-popup__caption");
-// previews.forEach((image) => {
-//   image.addEventListener("click", () => {
-//     imagePopup.classList.add("modal_is-visible");
-//     original.src = image.src;
-//     modalCaption.textContent = image.alt;
-//   });
-// });
 
 // Close image modal
 let imageModal = document.querySelector(".image-view");
