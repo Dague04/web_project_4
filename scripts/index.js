@@ -1,50 +1,26 @@
-const initialCards = [
-  {
-    name: "Yosemite Valley",
-    link: "https://code.s3.yandex.net/web-code/yosemite.jpg",
-  },
-  {
-    name: "Lake Louise",
-    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg",
-  },
-  {
-    name: "Bald Mountains",
-    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg",
-  },
-  {
-    name: "Latemar",
-    link: "https://code.s3.yandex.net/web-code/latemar.jpg",
-  },
-  {
-    name: "Vanoise National Park",
-    link: "https://code.s3.yandex.net/web-code/vanoise.jpg",
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://code.s3.yandex.net/web-code/lago.jpg",
-  },
-];
-let container = document.querySelector(".content");
-let modalProfile = document.querySelector(".edit-profile");
-let modalCard = document.querySelector(".add-card");
-let btnCloseProfileModal = modalProfile.querySelector(".profile-close-btn");
-let btnCloseCardModal = modalCard.querySelector(".card-close-btn");
-let btnEditProfile = document.querySelector(".profile__edit-button");
-let btnAddCard = document.querySelector(".profile__add-button");
-let profileModalForm = document.querySelector(".modal__profile-form");
-let cardModalForm = document.querySelector(".modal__card-form");
-let username = document.querySelector(".profile__name");
-let profession = document.querySelector(".profile__profession");
-let elementsTemplate = document.querySelector("#elements-template").content;
-let cardTitle = elementsTemplate.querySelector(".elements__text");
-let cardImageLink = elementsTemplate.querySelector(".elements__item");
-let modalUsername = profileModalForm.querySelector(".modal__input-name");
-let modalProfession = profileModalForm.querySelector(
+const container = document.querySelector(".content");
+const modalProfile = document.querySelector(".edit-profile");
+const modalCard = document.querySelector(".add-card");
+const btnCloseProfileModal = modalProfile.querySelector(".profile-close-btn");
+const btnCloseCardModal = modalCard.querySelector(".card-close-btn");
+const btnEditProfile = document.querySelector(".profile__edit-button");
+const btnAddCard = document.querySelector(".profile__add-button");
+const profileModalForm = document.querySelector(".modal__profile-form");
+const cardModalForm = document.querySelector(".modal__card-form");
+const username = document.querySelector(".profile__name");
+const profession = document.querySelector(".profile__profession");
+const elementsTemplate = document.querySelector("#elements-template").content;
+const cardTitle = elementsTemplate.querySelector(".elements__text");
+const cardImageLink = elementsTemplate.querySelector(".elements__item");
+const modalUsername = profileModalForm.querySelector(".modal__input-name");
+const modalProfession = profileModalForm.querySelector(
   ".modal__input-profession"
 );
-let modalCardTitle = cardModalForm.querySelector(".modal__input-title");
-let modalImageLink = cardModalForm.querySelector(".modal__input-image-link");
-let profileInfo = document.querySelector(".profile__info");
+const modalCardTitle = cardModalForm.querySelector(".modal__input-title");
+const modalImageLink = cardModalForm.querySelector(".modal__input-image-link");
+const profileInfo = document.querySelector(".profile__info");
+const imageModal = document.querySelector(".image-view");
+const btnImageClosemodal = document.querySelector(".image-popup__closebtn");
 
 const createCardTemplate = () => {
   const cardTemplate = document
@@ -55,20 +31,37 @@ const createCardTemplate = () => {
 
 // Edit Profile
 
-const openEditProfile = function () {
-  modalProfile.classList.add("modal_is-visible");
-
-  modalUsername.value = username.textContent;
-  modalProfession.value = profession.textContent;
-};
-
 const closeModal = (modal) => {
   modal.classList.toggle("modal_is-visible");
 };
 
+const openModal = (modal) => {
+  modal.classList.add("modal_is-visible");
+};
+
+const openEditProfile = function () {
+  modalUsername.value = username.textContent;
+  modalProfession.value = profession.textContent;
+
+  openModal(modalProfile);
+};
+
+// make modal card form visible
+const openAddCard = function () {
+  openModal(modalCard);
+};
+btnAddCard.addEventListener("click", openAddCard);
+
 btnEditProfile.addEventListener("click", openEditProfile);
 
+// Close Profile modal
 btnCloseProfileModal.addEventListener("click", () => closeModal(modalProfile));
+
+// Close image modal
+btnImageClosemodal.addEventListener("click", () => closeModal(imageModal));
+
+// close card modal
+btnCloseCardModal.addEventListener("click", () => closeModal(modalCard));
 
 profileModalForm.addEventListener("submit", function (e) {
   e.preventDefault();
@@ -78,22 +71,63 @@ profileModalForm.addEventListener("submit", function (e) {
   closeModal(modalProfile);
 });
 
-// make modal card form visible
-const openAddCard = function () {
-  modalCard.classList.add("modal_is-visible");
+const deleteCard = (evt) => {
+  evt.target.closest(".elements__list-item").remove();
 };
-btnAddCard.addEventListener("click", openAddCard);
 
-// close card modal
-btnCloseCardModal.addEventListener("click", () => closeModal(modalCard));
+const likesCard = () => {
+  buttonLikes.classList.toggle("elements__heart_theme_dark");
+};
 
-// Open an image pop-up
+const renderCard = (card) => {
+  const link = card.link;
+  const name = card.name;
+  const alt = card.alt;
+
+  const cardElement = createCardTemplate();
+
+  card = cardElement;
+
+  cardElement.querySelector(".elements__item").setAttribute("src", link);
+  cardElement.querySelector(".elements__item").setAttribute("alt", alt);
+  cardElement.querySelector(".elements__text").textContent = name;
+
+  // like a card
+  const buttonLikes = cardElement.querySelector(".elements__heart");
+  buttonLikes.addEventListener("click", () => {
+    buttonLikes.classList.toggle("elements__heart_theme_dark");
+  });
+
+  // delete a card
+  const buttonDelete = cardElement.querySelector(".elements__delete-card");
+  buttonDelete.addEventListener("click", deleteCard);
+
+  // create image modal
+  const modalImage = cardElement.querySelector(".elements__item");
+  const imagePopup = document.querySelector(".image-popup");
+  const imagePopup_img = document.querySelector(".image-popup__img");
+  const modalCaption = document.querySelector(".image-popup__caption");
+
+  modalImage.addEventListener("click", () => {
+    imagePopup.classList.add("modal_is-visible");
+    imagePopup_img.src = link;
+    imagePopup_img.alt = alt;
+    modalCaption.textContent = name;
+  });
+
+  return card;
+};
+
+const loadCards = (data) => {
+  const elementsUL = document.querySelector(".elements__list");
+
+  elementsUL.prepend(renderCard(data));
+};
 
 // upload a card
-
 cardModalForm.addEventListener("submit", function (e) {
   e.preventDefault();
-  renderCards({
+  loadCards({
     link: modalImageLink.value,
     name: modalCardTitle.value,
   });
@@ -101,47 +135,6 @@ cardModalForm.addEventListener("submit", function (e) {
   closeModal(modalCard);
 });
 
-const renderCards = (data) => {
-  const link = data.link;
-  const name = data.name;
-  let elementsUL = document.querySelector(".elements__list");
-
-  const cardElement = createCardTemplate();
-  cardElement.querySelector(".elements__item").setAttribute("src", link);
-  cardElement.querySelector(".elements__text").textContent = name;
-
-  // like a card
-  let buttonLikes = cardElement.querySelector(".elements__heart");
-  buttonLikes.addEventListener("click", () => {
-    buttonLikes.classList.toggle("elements__heart_theme_dark");
-  });
-
-  // delete a card
-  let buttonDelete = cardElement.querySelector(".elements__delete-card");
-  buttonDelete.addEventListener("click", (evt) => {
-    evt.target.closest(".elements__list-item").remove();
-  });
-
-  // create image modal
-  let modalImage = cardElement.querySelector(".elements__item");
-  let imagePopup = document.querySelector(".image-popup");
-  let imagePopup_img = document.querySelector(".image-popup__img");
-  let modalCaption = document.querySelector(".image-popup__caption");
-
-  modalImage.addEventListener("click", () => {
-    imagePopup.classList.add("modal_is-visible");
-    imagePopup_img.src = link;
-    modalCaption.textContent = name;
-  });
-
-  elementsUL.prepend(cardElement);
-};
-
 initialCards.forEach((card) => {
-  renderCards(card);
+  loadCards(card);
 });
-
-// Close image modal
-let imageModal = document.querySelector(".image-view");
-let btnImageClosemodal = document.querySelector(".image-popup__closebtn");
-btnImageClosemodal.addEventListener("click", () => closeModal(imageModal));
