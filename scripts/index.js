@@ -75,10 +75,6 @@ const deleteCard = (evt) => {
   evt.target.closest(".elements__list-item").remove();
 };
 
-const likesCard = () => {
-  buttonLikes.classList.toggle("elements__heart_theme_dark");
-};
-
 const renderCard = (card) => {
   const link = card.link;
   const name = card.name;
@@ -88,8 +84,10 @@ const renderCard = (card) => {
 
   card = cardElement;
 
-  cardElement.querySelector(".elements__item").setAttribute("src", link);
-  cardElement.querySelector(".elements__item").setAttribute("alt", alt);
+  const imageElement = cardElement.querySelector(".elements__item");
+
+  imageElement.setAttribute("src", link);
+  imageElement.setAttribute("alt", alt);
   cardElement.querySelector(".elements__text").textContent = name;
 
   // like a card
@@ -109,7 +107,7 @@ const renderCard = (card) => {
   const modalCaption = document.querySelector(".image-popup__caption");
 
   modalImage.addEventListener("click", () => {
-    imagePopup.classList.add("modal_is-visible");
+    openModal(imagePopup);
     imagePopup_img.src = link;
     imagePopup_img.alt = alt;
     modalCaption.textContent = name;
