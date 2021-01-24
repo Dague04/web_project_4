@@ -4,7 +4,9 @@
 @import url(./__heading/modal__heading.css);
 @import url(./__input-text/modal__input-text.css);
 @import url(./__button/modal__button.css);
+@import url(./__button/_is-inactive/modal__button_is-inactive.css);
 @import url(./__closebtn/modal__closebtn.css);
+@import url(./__label/modal__label.css);
 
 .modal {
   position: fixed;

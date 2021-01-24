@@ -46,25 +46,38 @@
     <footer class="footer">
       <p class="footer__copyright">© 2020 Around The U.S.</p>
     </footer>
-    <div class="modal edit-profile">
+    <div class="modal edit-profile modal-main">
       <div class="modal__content">
         <h3 class="modal__heading">Edit profile</h3>
 
-        <form class="modal__profile-form">
-          <input
-            id="name"
-            type="text"
-            placeholder="Name"
-            class="modal__input-text modal__input-name"
-            required
-          />
-          <input
-            id="profession"
-            type="text"
-            placeholder="Profession"
-            class="modal__input-text modal__input-profession"
-            required
-          />
+        <form class="form modal__profile-form" novalidate>
+          <label class="modal__label">
+            <input
+              type="text"
+              placeholder="Name"
+              class="modal__input-text modal__input-name form__input"
+              id="name-input"
+              minlength="2"
+              maxlength="40"
+              required
+            />
+            <span class="form__input-error name-input-error"></span>
+          </label>
+          <label class="modal__label">
+            <input
+              type="text"
+              placeholder="Profession"
+              class="modal__input-text modal__input-profession form__input"
+              id="profession-input"
+              minlength="2"
+              maxlength="200"
+              required
+            />
+            <span class="form__input-error profession-input-error"
+              >Please fill out this field</span
+            >
+          </label>
+
           <button class="modal__button modal__button-text" type="submit">
             Save
           </button>
@@ -77,25 +90,36 @@
         ></button>
       </div>
     </div>
-    <div class="modal add-card">
+    <div class="modal add-card modal-main">
       <div class="modal__content">
         <h3 class="modal__heading">New Place</h3>
 
-        <form class="modal__card-form">
-          <input
-            id="title"
-            type="text"
-            placeholder="Title"
-            class="modal__input-text modal__input-title"
-            required
-          />
-          <input
-            id="image-link"
-            type="url"
-            placeholder="Image link"
-            class="modal__input-text modal__input-image-link"
-            required
-          />
+        <form class="form modal__card-form" novalidate>
+          <label class="modal__label">
+            <input
+              type="text"
+              placeholder="Title"
+              class="modal__input-text modal__input-title form__input"
+              id="title-input"
+              minlength="1"
+              maxlength="30"
+              required
+            />
+            <span class="form__input-error title-input-error"></span>
+          </label>
+          <label class="modal__label">
+            <input
+              type="url"
+              placeholder="Image link"
+              class="modal__input-text modal__input-image-link form__input"
+              id="url-input"
+              required
+            />
+            <span class="form__input-error url-input-error"
+              >Please enter a web address.</span
+            >
+          </label>
+
           <button class="modal__button modal__button-text" type="submit">
             Create
           </button>
@@ -108,7 +132,7 @@
         ></button>
       </div>
     </div>
-    <figure class="image-popup image-view">
+    <figure class="image-popup image-view modal-main">
       <div class="image-popup__container">
         <img src="#" alt="#" class="image-popup__img" />
         <button
@@ -138,5 +162,6 @@
     </template>
     <script src="./data/data.js"></script>
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
   </body>
 </html>

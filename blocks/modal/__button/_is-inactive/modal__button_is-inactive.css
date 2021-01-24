@@ -1,0 +1,6 @@
+.modal__button_is-inactive {
+  color: #b8b8b8;
+  background: #ffffff;
+  pointer-events: none;
+  user-select: none;
+}

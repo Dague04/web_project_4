@@ -21,6 +21,7 @@ const modalImageLink = cardModalForm.querySelector(".modal__input-image-link");
 const profileInfo = document.querySelector(".profile__info");
 const imageModal = document.querySelector(".image-view");
 const btnImageClosemodal = document.querySelector(".image-popup__closebtn");
+const modalArray = Array.from(document.querySelectorAll(".modal-main"));
 
 const createCardTemplate = () => {
   const cardTemplate = document
@@ -32,7 +33,7 @@ const createCardTemplate = () => {
 // Edit Profile
 
 const closeModal = (modal) => {
-  modal.classList.toggle("modal_is-visible");
+  modal.classList.remove("modal_is-visible");
 };
 
 const openModal = (modal) => {
@@ -62,6 +63,22 @@ btnImageClosemodal.addEventListener("click", () => closeModal(imageModal));
 
 // close card modal
 btnCloseCardModal.addEventListener("click", () => closeModal(modalCard));
+
+modalArray.forEach((modal) => {
+  modal.addEventListener("click", (e) => {
+    if (e.target.classList.contains("modal-main")) {
+      closeModal(modal);
+    }
+  });
+});
+
+modalArray.forEach((modal) => {
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeModal(modal);
+    }
+  });
+});
 
 profileModalForm.addEventListener("submit", function (e) {
   e.preventDefault();

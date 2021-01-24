@@ -1,5 +1,5 @@
 .modal__input-text {
-  width: 100%;
+  /* width: 100%;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -7,10 +7,20 @@
   max-height: 14px;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  margin-bottom: 29.74px;
+  margin-bottom: 5px;
   padding-bottom: 13.26px;
   padding-top: 0;
+  outline: none; */
+  width: 100%;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.21;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  position: relative;
   outline: none;
+  padding: 5px 0;
 }
 
 @media screen and (max-width: 320px) {

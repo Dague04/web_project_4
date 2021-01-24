@@ -1,0 +1,10 @@
+.modal__label {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 32px 0 0;
+}
+
+/* .modal__label:last-child {
+  margin-bottom: 48px;
+} */
