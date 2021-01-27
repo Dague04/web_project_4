@@ -1,4 +1,7 @@
 @import url(./__content/modal__content.css);
+@import url(./__image-container/modal__image-container.css);
+@import url(./__caption/modal__caption.css);
+@import url(./__image/modal__image.css);
 @import url(./__profile-form/modal__profile-form.css);
 @import url(./__card-form/modal__card-form.css);
 @import url(./__heading/modal__heading.css);
@@ -11,13 +14,11 @@
 .modal {
   position: fixed;
   z-index: 1;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   top: 0;
   left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin: 0;
   background-color: rgba(0, 0, 0, 0.5);
   visibility: hidden;
   opacity: 0;

@@ -1,8 +1,7 @@
 const container = document.querySelector(".content");
 const modalProfile = document.querySelector(".edit-profile");
 const modalCard = document.querySelector(".add-card");
-const btnCloseProfileModal = modalProfile.querySelector(".profile-close-btn");
-const btnCloseCardModal = modalCard.querySelector(".card-close-btn");
+const clsebtnArray = Array.from(document.querySelectorAll(".modal__closebtn"));
 const btnEditProfile = document.querySelector(".profile__edit-button");
 const btnAddCard = document.querySelector(".profile__add-button");
 const profileModalForm = document.querySelector(".modal__profile-form");
@@ -20,8 +19,7 @@ const modalCardTitle = cardModalForm.querySelector(".modal__input-title");
 const modalImageLink = cardModalForm.querySelector(".modal__input-image-link");
 const profileInfo = document.querySelector(".profile__info");
 const imageModal = document.querySelector(".image-view");
-const btnImageClosemodal = document.querySelector(".image-popup__closebtn");
-const modalArray = Array.from(document.querySelectorAll(".modal-main"));
+const modalArray = Array.from(document.querySelectorAll(".modal"));
 
 const createCardTemplate = () => {
   const cardTemplate = document
@@ -55,23 +53,29 @@ btnAddCard.addEventListener("click", openAddCard);
 
 btnEditProfile.addEventListener("click", openEditProfile);
 
-// Close Profile modal
-btnCloseProfileModal.addEventListener("click", () => closeModal(modalProfile));
+// Close modal by clicking on X
+clsebtnArray.forEach((button) => {
+  button.addEventListener("click", () => {
+    if (button.classList.contains("profile-close-btn")) {
+      closeModal(modalProfile);
+    } else if (button.classList.contains("image-close-btn")) {
+      closeModal(imageModal);
+    } else {
+      closeModal(modalCard);
+    }
+  });
+});
 
-// Close image modal
-btnImageClosemodal.addEventListener("click", () => closeModal(imageModal));
-
-// close card modal
-btnCloseCardModal.addEventListener("click", () => closeModal(modalCard));
-
+// Close modal by clicking on overlay
 modalArray.forEach((modal) => {
   modal.addEventListener("click", (e) => {
-    if (e.target.classList.contains("modal-main")) {
+    if (e.target.classList.contains("modal")) {
       closeModal(modal);
     }
   });
 });
 
+// Close modal by pressing ESC
 modalArray.forEach((modal) => {
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
@@ -119,9 +123,9 @@ const renderCard = (card) => {
 
   // create image modal
   const modalImage = cardElement.querySelector(".elements__item");
-  const imagePopup = document.querySelector(".image-popup");
-  const imagePopup_img = document.querySelector(".image-popup__img");
-  const modalCaption = document.querySelector(".image-popup__caption");
+  const imagePopup = document.querySelector(".image-view");
+  const imagePopup_img = document.querySelector(".modal__image");
+  const modalCaption = document.querySelector(".modal__caption");
 
   modalImage.addEventListener("click", () => {
     openModal(imagePopup);
@@ -148,6 +152,7 @@ cardModalForm.addEventListener("submit", function (e) {
   });
 
   closeModal(modalCard);
+  cardModalForm.reset();
 });
 
 initialCards.forEach((card) => {

@@ -1,6 +1,8 @@
-.image-popup__img {
+.modal__image {
   /* object-fit: fill; */
   max-height: 75vh;
   max-width: 75vw;
   position: relative;
+  margin: 0;
+  padding: 0;
 }

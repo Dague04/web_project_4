@@ -1,4 +1,5 @@
 .modal_is-visible {
   visibility: visible;
   opacity: 1;
+  /* margin: 0; */
 }
