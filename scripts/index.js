@@ -1,7 +1,6 @@
 const container = document.querySelector(".content");
 const modalProfile = document.querySelector(".edit-profile");
 const modalCard = document.querySelector(".add-card");
-const clsebtnArray = Array.from(document.querySelectorAll(".modal__closebtn"));
 const btnEditProfile = document.querySelector(".profile__edit-button");
 const btnAddCard = document.querySelector(".profile__add-button");
 const profileModalForm = document.querySelector(".modal__profile-form");
@@ -20,6 +19,10 @@ const modalImageLink = cardModalForm.querySelector(".modal__input-image-link");
 const profileInfo = document.querySelector(".profile__info");
 const imageModal = document.querySelector(".image-view");
 const modalArray = Array.from(document.querySelectorAll(".modal"));
+const imagePopup = document.querySelector(".image-view");
+const imagePopup_img = document.querySelector(".modal__image");
+const modalCaption = document.querySelector(".modal__caption");
+const elementsUL = document.querySelector(".elements__list");
 
 const createCardTemplate = () => {
   const cardTemplate = document
@@ -28,14 +31,23 @@ const createCardTemplate = () => {
   return cardTemplate;
 };
 
+function closeByEscape(evt) {
+  if (evt.key === "Escape") {
+    const openedModal = document.querySelector(".modal_is-visible");
+    closeModal(openedModal);
+  }
+}
+
 // Edit Profile
 
 const closeModal = (modal) => {
   modal.classList.remove("modal_is-visible");
+  document.removeEventListener("keydown", closeByEscape);
 };
 
 const openModal = (modal) => {
   modal.classList.add("modal_is-visible");
+  document.addEventListener("keydown", closeByEscape);
 };
 
 const openEditProfile = function () {
@@ -53,32 +65,13 @@ btnAddCard.addEventListener("click", openAddCard);
 
 btnEditProfile.addEventListener("click", openEditProfile);
 
-// Close modal by clicking on X
-clsebtnArray.forEach((button) => {
-  button.addEventListener("click", () => {
-    if (button.classList.contains("profile-close-btn")) {
-      closeModal(modalProfile);
-    } else if (button.classList.contains("image-close-btn")) {
-      closeModal(imageModal);
-    } else {
-      closeModal(modalCard);
-    }
-  });
-});
-
-// Close modal by clicking on overlay
+// Close modal by clicking on overlay and on cross
 modalArray.forEach((modal) => {
   modal.addEventListener("click", (e) => {
     if (e.target.classList.contains("modal")) {
       closeModal(modal);
     }
-  });
-});
-
-// Close modal by pressing ESC
-modalArray.forEach((modal) => {
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
+    if (e.target.classList.contains("modal__closebtn")) {
       closeModal(modal);
     }
   });
@@ -102,9 +95,6 @@ const renderCard = (card) => {
   const alt = card.alt;
 
   const cardElement = createCardTemplate();
-
-  card = cardElement;
-
   const imageElement = cardElement.querySelector(".elements__item");
 
   imageElement.setAttribute("src", link);
@@ -121,25 +111,17 @@ const renderCard = (card) => {
   const buttonDelete = cardElement.querySelector(".elements__delete-card");
   buttonDelete.addEventListener("click", deleteCard);
 
-  // create image modal
-  const modalImage = cardElement.querySelector(".elements__item");
-  const imagePopup = document.querySelector(".image-view");
-  const imagePopup_img = document.querySelector(".modal__image");
-  const modalCaption = document.querySelector(".modal__caption");
-
-  modalImage.addEventListener("click", () => {
+  imageElement.addEventListener("click", () => {
     openModal(imagePopup);
     imagePopup_img.src = link;
     imagePopup_img.alt = alt;
     modalCaption.textContent = name;
   });
 
-  return card;
+  return cardElement;
 };
 
 const loadCards = (data) => {
-  const elementsUL = document.querySelector(".elements__list");
-
   elementsUL.prepend(renderCard(data));
 };
 
