@@ -20,7 +20,7 @@ const profileInfo = document.querySelector(".profile__info");
 const imageModal = document.querySelector(".image-view");
 const modalArray = Array.from(document.querySelectorAll(".modal"));
 const imagePopup = document.querySelector(".image-view");
-const imagePopup_img = document.querySelector(".modal__image");
+const imagePopupImage = document.querySelector(".modal__image");
 const modalCaption = document.querySelector(".modal__caption");
 const elementsUL = document.querySelector(".elements__list");
 
@@ -113,8 +113,8 @@ const renderCard = (card) => {
 
   imageElement.addEventListener("click", () => {
     openModal(imagePopup);
-    imagePopup_img.src = link;
-    imagePopup_img.alt = alt;
+    imagePopupImage.src = link;
+    imagePopupImage.alt = alt;
     modalCaption.textContent = name;
   });
 
