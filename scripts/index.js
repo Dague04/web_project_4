@@ -1,4 +1,6 @@
-const container = document.querySelector(".content");
+import { Card } from "./Card.js";
+import { FormValidator } from "./FormValidator.js";
+
 const modalProfile = document.querySelector(".edit-profile");
 const modalCard = document.querySelector(".add-card");
 const btnEditProfile = document.querySelector(".profile__edit-button");
@@ -7,29 +9,30 @@ const profileModalForm = document.querySelector(".modal__profile-form");
 const cardModalForm = document.querySelector(".modal__card-form");
 const username = document.querySelector(".profile__name");
 const profession = document.querySelector(".profile__profession");
-const elementsTemplate = document.querySelector("#elements-template").content;
-const cardTitle = elementsTemplate.querySelector(".elements__text");
-const cardImageLink = elementsTemplate.querySelector(".elements__item");
 const modalUsername = profileModalForm.querySelector(".modal__input-name");
 const modalProfession = profileModalForm.querySelector(
   ".modal__input-profession"
 );
 const modalCardTitle = cardModalForm.querySelector(".modal__input-title");
 const modalImageLink = cardModalForm.querySelector(".modal__input-image-link");
-const profileInfo = document.querySelector(".profile__info");
-const imageModal = document.querySelector(".image-view");
 const modalArray = Array.from(document.querySelectorAll(".modal"));
-const imagePopup = document.querySelector(".image-view");
 const imagePopupImage = document.querySelector(".modal__image");
 const modalCaption = document.querySelector(".modal__caption");
 const elementsUL = document.querySelector(".elements__list");
 
-const createCardTemplate = () => {
-  const cardTemplate = document
-    .querySelector("#elements-template")
-    .content.cloneNode(true);
-  return cardTemplate;
+const settings = {
+  inputSelector: ".form__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_is-inactive",
+  inputErrorClass: "form__input_type_error",
+  errorClass: "form__input-error_active",
 };
+
+const editProfileValidate = new FormValidator(settings, profileModalForm);
+const addCardValidate = new FormValidator(settings, cardModalForm);
+
+editProfileValidate.enableValidation();
+addCardValidate.enableValidation();
 
 function closeByEscape(evt) {
   if (evt.key === "Escape") {
@@ -85,44 +88,15 @@ profileModalForm.addEventListener("submit", function (e) {
   closeModal(modalProfile);
 });
 
-const deleteCard = (evt) => {
-  evt.target.closest(".elements__list-item").remove();
-};
-
-const renderCard = (card) => {
-  const link = card.link;
-  const name = card.name;
-  const alt = card.alt;
-
-  const cardElement = createCardTemplate();
-  const imageElement = cardElement.querySelector(".elements__item");
-
-  imageElement.setAttribute("src", link);
-  imageElement.setAttribute("alt", alt);
-  cardElement.querySelector(".elements__text").textContent = name;
-
-  // like a card
-  const buttonLikes = cardElement.querySelector(".elements__heart");
-  buttonLikes.addEventListener("click", () => {
-    buttonLikes.classList.toggle("elements__heart_theme_dark");
-  });
-
-  // delete a card
-  const buttonDelete = cardElement.querySelector(".elements__delete-card");
-  buttonDelete.addEventListener("click", deleteCard);
-
-  imageElement.addEventListener("click", () => {
-    openModal(imagePopup);
-    imagePopupImage.src = link;
-    imagePopupImage.alt = alt;
-    modalCaption.textContent = name;
-  });
-
-  return cardElement;
+const imagePopupData = (name, link, alt) => {
+  imagePopupImage.src = link;
+  imagePopupImage.alt = alt;
+  modalCaption.textContent = name;
 };
 
 const loadCards = (data) => {
-  elementsUL.prepend(renderCard(data));
+  const card = new Card(data, "#elements-template");
+  elementsUL.prepend(card.generateCard());
 };
 
 // upload a card
@@ -140,3 +114,5 @@ cardModalForm.addEventListener("submit", function (e) {
 initialCards.forEach((card) => {
   loadCards(card);
 });
+
+export { imagePopupData, openModal };
