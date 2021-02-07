@@ -1,4 +1,4 @@
-import { imagePopupData, openModal } from "./index.js";
+import { imagePopupData } from "./index.js";
 
 export class Card {
   constructor(data, cardTemplateSelector) {
@@ -17,10 +17,6 @@ export class Card {
   };
 
   generateCard() {
-    // const link = card.link;
-    // const name = card.name;
-    // const alt = card.alt;
-
     this._cardElement = this._createCardTemplate();
     this._setEventListeners();
     const imageElement = this._cardElement.querySelector(".elements__item");
@@ -37,26 +33,24 @@ export class Card {
   // }
 
   _setEventListeners() {
-    const imageElement = this._cardElement.querySelector(".elements__item");
+    this._imageElement = this._cardElement.querySelector(".elements__item");
     // const modalCaption = this._cardElement.querySelector(".modal__caption");
-    const imagePopup = document.querySelector(".image-view");
 
     // like a card
-    const buttonLikes = this._cardElement.querySelector(".elements__heart");
-    buttonLikes.addEventListener("click", () => {
+    this._buttonLikes = this._cardElement.querySelector(".elements__heart");
+    this._buttonLikes.addEventListener("click", () => {
       buttonLikes.classList.toggle("elements__heart_theme_dark");
     });
 
     // delete a card
-    const buttonDelete = this._cardElement.querySelector(
+    this._buttonDelete = this._cardElement.querySelector(
       ".elements__delete-card"
     );
-    buttonDelete.addEventListener("click", (evt) => {
+    this._buttonDelete.addEventListener("click", (evt) => {
       evt.target.closest(".elements__list-item").remove();
     });
 
-    imageElement.addEventListener("click", () => {
-      openModal(imagePopup);
+    this._imageElement.addEventListener("click", () => {
       imagePopupData(this._name, this._link, this._alt);
     });
   }

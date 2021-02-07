@@ -1,5 +1,6 @@
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
+import { initialCards } from "../data/data.js";
 
 const modalProfile = document.querySelector(".edit-profile");
 const modalCard = document.querySelector(".add-card");
@@ -13,6 +14,7 @@ const modalUsername = profileModalForm.querySelector(".modal__input-name");
 const modalProfession = profileModalForm.querySelector(
   ".modal__input-profession"
 );
+const imagePopup = document.querySelector(".image-view");
 const modalCardTitle = cardModalForm.querySelector(".modal__input-title");
 const modalImageLink = cardModalForm.querySelector(".modal__input-image-link");
 const modalArray = Array.from(document.querySelectorAll(".modal"));
@@ -56,12 +58,14 @@ const openModal = (modal) => {
 const openEditProfile = function () {
   modalUsername.value = username.textContent;
   modalProfession.value = profession.textContent;
-
+  editProfileValidate.resetValidation();
   openModal(modalProfile);
 };
 
 // make modal card form visible
 const openAddCard = function () {
+  cardModalForm.reset();
+  addCardValidate.resetValidation();
   openModal(modalCard);
 };
 btnAddCard.addEventListener("click", openAddCard);
@@ -89,13 +93,20 @@ profileModalForm.addEventListener("submit", function (e) {
 });
 
 const imagePopupData = (name, link, alt) => {
+  openModal(imagePopup);
+
   imagePopupImage.src = link;
   imagePopupImage.alt = alt;
   modalCaption.textContent = name;
 };
 
-const loadCards = (data) => {
+const createCard = (data) => {
   const card = new Card(data, "#elements-template");
+  return card;
+};
+
+const loadCards = (data) => {
+  const card = createCard(data);
   elementsUL.prepend(card.generateCard());
 };
 
