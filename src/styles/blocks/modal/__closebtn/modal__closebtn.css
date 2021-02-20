@@ -1,0 +1,29 @@
+.modal__closebtn {
+  background: transparent url(../../../../images/closebtn.svg) no-repeat 50%;
+  position: absolute;
+  top: -40px;
+  right: -30px;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+}
+
+@media screen and (max-width: 518px) {
+  .modal__closebtn {
+    top: -30px;
+    right: -25px;
+    width: 1.7rem;
+    height: 1.7rem;
+  }
+}
+
+@media screen and (max-width: 358px) {
+  .modal__closebtn {
+    right: -10px;
+    width: 1.625rem;
+    height: 1.625rem;
+  }
+}

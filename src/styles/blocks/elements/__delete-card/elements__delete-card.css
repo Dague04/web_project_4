@@ -1,0 +1,18 @@
+.elements__delete-card {
+  background: url(../../../../images/trash-can.svg) no-repeat center bottom,
+    url(../../../../images/trash-lid.svg) no-repeat center top;
+  padding: 0;
+  /* background-color: #ffffff; */
+  border: none;
+  width: 21px;
+  height: 20px;
+  position: absolute;
+  top: 19px;
+  right: 15px;
+  /* z-index: 99; */
+  cursor: pointer;
+}
+
+.elements__delete-card:hover {
+  opacity: 0.6;
+}

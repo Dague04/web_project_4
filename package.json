@@ -1,0 +1,38 @@
+{
+  "name": "around-the-us",
+  "version": "0.0.1",
+  "description": "### Overview",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dague04/web_project_4.git"
+  },
+  "author": "Daguinson Fleurantin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dague04/web_project_4/issues"
+  },
+  "homepage": "https://github.com/Dague04/web_project_4#readme",
+  "devDependencies": {
+    "@babel/core": "^7.12.17",
+    "@babel/preset-env": "^7.12.17",
+    "autoprefixer": "^10.2.4",
+    "babel-loader": "^8.2.2",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^5.0.2",
+    "cssnano": "^4.1.10",
+    "html-webpack-plugin": "^5.1.0",
+    "mini-css-extract-plugin": "^1.3.8",
+    "postcss-loader": "^5.0.0",
+    "webpack": "^5.23.0",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "core-js": "^3.9.0"
+  }
+}
