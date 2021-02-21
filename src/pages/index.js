@@ -1,10 +1,7 @@
-// import { loadOneCard } from "../utils/utils.js";
 import "./index.css";
 import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
 import {
-  modalProfile,
-  modalCard,
   btnAddCard,
   btnEditProfile,
   profileModalForm,
@@ -13,17 +10,10 @@ import {
   profession,
   modalUsername,
   modalProfession,
-  imagePopup,
-  modalCardTitle,
-  modalImageLink,
-  modalArray,
-  imagePopupImage,
-  modalCaption,
   elementsUL,
   cardSelectorTemplate,
 } from "../utils/constants.js";
 import { initialCards } from "../data/data.js";
-// import { createCard } from "../utils/utils.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 import Card from "../components/Card.js";
@@ -74,6 +64,8 @@ const initialCardList = new Section(
 
 initialCardList.renderCards();
 
+const userInfo = new UserInfo(".profile__name", ".profile__profession");
+
 const addCardForm = new PopupWithForm({
   popupSelector: ".add-card",
 
@@ -92,9 +84,9 @@ const addCardForm = new PopupWithForm({
 
 const editProfileForm = new PopupWithForm({
   popupSelector: ".edit-profile",
-  handleFormSubmit: ({ data }) => {
-    const userInfo = new UserInfo(modalUsername, modalProfession);
-    userInfo.setUserInfo(data);
+  handleFormSubmit: (data) => {
+    const obj = { name: data.nameInput, job: data.professionInput };
+    userInfo.setUserInfo(obj);
     editProfileForm.close();
   },
 });
@@ -115,83 +107,3 @@ btnAddCard.addEventListener("click", () => {
   addCardValidate.resetValidation();
   addCardForm.open();
 });
-
-// const addCardForm = new PopupWithForm({popupSelector:'.add-card', handleFormSubmit: })
-
-// function closeByEscape(evt) {
-//   if (evt.key === "Escape") {
-//     const openedModal = document.querySelector(".modal_is-visible");
-//     closeModal(openedModal);
-//   }
-// }
-
-// Edit Profile
-
-// const closeModal = (modal) => {
-//   modal.classList.remove("modal_is-visible");
-//   document.removeEventListener("keydown", closeByEscape);
-// };
-
-// const openModal = (modal) => {
-//   modal.classList.add("modal_is-visible");
-//   document.addEventListener("keydown", closeByEscape);
-// };
-
-// const openEditProfile = function () {
-//   modalUsername.value = username.textContent;
-//   modalProfession.value = profession.textContent;
-//   editProfileValidate.resetValidation();
-//   openModal(modalProfile);
-// };
-
-// make modal card form visible
-// const openAddCard = function () {
-//   cardModalForm.reset();
-//   addCardValidate.resetValidation();
-//   // openModal(modalCard);
-// };
-// btnAddCard.addEventListener("click", openAddCard);
-
-// btnEditProfile.addEventListener("click", openEditProfile);
-
-// Close modal by clicking on overlay and on cross
-// modalArray.forEach((modal) => {
-//   modal.addEventListener("click", (e) => {
-//     if (e.target.classList.contains("modal")) {
-//       closeModal(modal);
-//     }
-//     if (e.target.classList.contains("modal__closebtn")) {
-//       closeModal(modal);
-//     }
-//   });
-// });
-
-// profileModalForm.addEventListener("submit", function (e) {
-//   e.preventDefault();
-//   username.textContent = modalUsername.value;
-//   profession.textContent = modalProfession.value;
-
-//   closeModal(modalProfile);
-// });
-
-// const imagePopupData = (name, link, alt) => {
-//   openModal(imagePopup);
-
-//   imagePopupImage.src = link;
-//   imagePopupImage.alt = alt;
-//   modalCaption.textContent = name;
-// };
-
-// upload a card
-// cardModalForm.addEventListener("submit", function (e) {
-//   e.preventDefault();
-//   loadOneCard({
-//     link: modalImageLink.value,
-//     name: modalCardTitle.value,
-//   });
-
-//   // closeModal(modalCard);
-//   cardModalForm.reset();
-// });
-
-// export { imagePopupData, openModal };
